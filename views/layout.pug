@@ -1,0 +1,28 @@
+doctype html
+html
+    head
+        title Knowledgebase
+        link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css")
+        link(rel='stylesheet', href='/CSS/style.css')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js' defer)
+        script(src='/JS/main.js' defer)
+    body
+        nav
+            a(href='/') Article 
+            if user
+                a(href='/articles/add') Add Article
+            if user
+                a(href='/users/logout') Logout 
+            else
+                a(href='/users/register') Register 
+                a(href='/users/login') Login
+        .container
+            != messages('message', locals)
+            if errors
+                each error, i in errors
+                    div(class='alert alert-danger') Error
+            block content
+            br
+            hr
+            footer 
+                p CopyRight &copy; 2017
